@@ -31,9 +31,9 @@
     <div class="content text-center">
       <!-- O input ta dentro de painel, mas o valor é controlado por aqui -->
       <Painel 
-        v-model:first = 'firstInput'
-        v-model:second = 'secondInput'
-        @setFocusInput = 'setFocusInput'
+        v-model:first="firstInput"
+        v-model:second="secondInput"
+        @setFocusInput="setFocusInput"
         ></Painel>
       <Keyboard @clickKeyboard = 'selectInput'></Keyboard>
     </div>

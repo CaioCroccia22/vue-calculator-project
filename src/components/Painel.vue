@@ -3,7 +3,7 @@
     const numbersModel = defineModel('numbers')
     const first = defineModel('first')
     const second = defineModel('second')
-    const setFocusInput = defineEmits(['setFocusInput'])
+    const emit = defineEmits(['setFocusInput'])
 </script>
 
 <template>
@@ -11,7 +11,7 @@
         <div class="row py-5 rounded"  style="background-color: #30323F;">
             <div class="col-md-2 px-4">
                 <input type="text" 
-                    @focus="setFocusInput('firstInput')"  
+                    @focus="emit('setFocusInput','first')"  
                     v-model="first"
                     class="form-control" 
                     placeholder="digite o valor">
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-2 px-4">
                 <input type="text"
-                    @focus="setFocusInput('secondInput')"
+                    @focus="emit('setFocusInput','second')" 
                     v-model="second" 
                     class="form-control" 
                     placeholder="digite o valor">
