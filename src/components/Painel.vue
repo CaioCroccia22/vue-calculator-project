@@ -3,7 +3,7 @@
     const numbersModel = defineModel('numbers')
     const firstInput = defineModel('first')
     const secondInput = defineModel('second')
-    const emit = defineEmits(['setFocusInput'])
+    const emit = defineEmits(['setFocusInput', 'getOperator'])
 </script>
 
 <template>
@@ -17,7 +17,7 @@
                     placeholder="digite o valor">
             </div>
             <div class="col-md-2">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" @change="emit('getOperator', $event.target.value)" id="floatingSelect" aria-label="Floating label select example">
                     <option selected>Selecione a operação</option>
                     <option value="1">Soma</option>
                     <option value="2">Subtração</option>
@@ -28,7 +28,7 @@
             <div class="col-md-2 px-4">
                 <input type="text"
                     @focus="emit('setFocusInput','second')" 
-                    v-model="second" 
+                    v-model="secondInput" 
                     class="form-control" 
                     placeholder="digite o valor">
             </div>

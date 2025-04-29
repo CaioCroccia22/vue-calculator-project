@@ -15,16 +15,16 @@
   }
 
   const calc = (operator) =>{
-    if (operator === 'adicao'){
+    if (operator === '1'){
       console.log(operator)
     }
-    else if (operator === 'subtracao'){
+    else if (operator === '2'){
       console.log(operator)
     }
-    else if (operator === 'multiplicacao'){
+    else if (operator === '3'){
       console.log(operator)
     }
-    else if (operator === 'divisao'){
+    else if (operator === '4'){
       console.log(operator)
     }
   }
@@ -53,6 +53,7 @@
         v-model:firstInput="firstInput"
         v-model:secondInput="secondInput"
         @setFocusInput="setFocusInput"
+        @getOperator="calc"
         ></Painel>
       <Keyboard @clickKeyboard = "selectInput"></Keyboard>
     </div>
