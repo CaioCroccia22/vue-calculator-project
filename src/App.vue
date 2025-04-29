@@ -10,18 +10,37 @@
 
   const setFocusInput = (campo) => {
     inputSelecionado.value = campo;
-    console.log('O input que recebeu foco foi:', campo)
+    console.log(inputSelecionado.value)
+    
   }
 
-  const selectInput = (n) => 
-    {
-      if (inputSelecionado.value === 'firstInput') {
-        firstInput.value += n
-      
-      
-      } else if(inputSelecionado.value === 'secondInput'){
-        secondInput.value += n
-      }
+  const calc = (operator) =>{
+    if (operator === 'adicao'){
+      console.log(operator)
+    }
+    else if (operator === 'subtracao'){
+      console.log(operator)
+    }
+    else if (operator === 'multiplicacao'){
+      console.log(operator)
+    }
+    else if (operator === 'divisao'){
+      console.log(operator)
+    }
+  }
+
+  
+
+  const selectInput = (n) => {
+    console.log('Recebi no selectInput:', n);
+    console.log('Input Selecionado:', inputSelecionado.value);
+
+    if (inputSelecionado.value === 'first') {
+      firstInput.value += n;
+      console.log('Valor do firstInput após o clique:', firstInput.value);
+    } else if (inputSelecionado.value === 'second') {
+      secondInput.value += n;
+    }
   }
 
   const cleanInput = () => numbers.value = '';
@@ -31,11 +50,11 @@
     <div class="content text-center">
       <!-- O input ta dentro de painel, mas o valor é controlado por aqui -->
       <Painel 
-        v-model:first="firstInput"
-        v-model:second="secondInput"
+        v-model:firstInput="firstInput"
+        v-model:secondInput="secondInput"
         @setFocusInput="setFocusInput"
         ></Painel>
-      <Keyboard @clickKeyboard = 'selectInput'></Keyboard>
+      <Keyboard @clickKeyboard = "selectInput"></Keyboard>
     </div>
     
 </template>

@@ -1,8 +1,8 @@
 <script setup>
 // Cria bindo direto com o v-model que vem com o pai
     const numbersModel = defineModel('numbers')
-    const first = defineModel('first')
-    const second = defineModel('second')
+    const firstInput = defineModel('first')
+    const secondInput = defineModel('second')
     const emit = defineEmits(['setFocusInput'])
 </script>
 
@@ -12,7 +12,7 @@
             <div class="col-md-2 px-4">
                 <input type="text" 
                     @focus="emit('setFocusInput','first')"  
-                    v-model="first"
+                    v-model="firstInput"
                     class="form-control" 
                     placeholder="digite o valor">
             </div>
