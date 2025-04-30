@@ -8,38 +8,51 @@
   const secondInput = ref('')
   const inputSelecionado = ref(null) // vai guardar o nome do input ativo
 
+  // Função para pegar o input selecionado
   const setFocusInput = (campo) => {
     inputSelecionado.value = campo;
-    console.log(inputSelecionado.value)
-    
   }
 
+  //Calculo da operação 
   const calc = (operator) =>{
-    if (operator === '1'){
-      console.log(operator)
+    // console.log(typeof(firstInput.value)) 
+    // console.log(typeof(secondInput.value))
+
+    const a = parseInt(firstInput.value)
+    // console.log(a)
+    const b = parseInt(secondInput.value)
+    // console.log(b)
+    let result = ''
+
+    switch (operator){
+      case '1':
+        result = a + b
+        break
+      case '2':
+        result = a - b
+        break
+      case '3':
+        result = b !== 0 ? a/b: 'Erro: divisão por zero'
+        break
+      case '4':
+        result = a * b
+        break
+      default:
+        result = 'Operador Inválida'
     }
-    else if (operator === '2'){
-      console.log(operator)
-    }
-    else if (operator === '3'){
-      console.log(operator)
-    }
-    else if (operator === '4'){
-      console.log(operator)
-    }
+    console.log(result)
   }
-
   
-
+  ///Seleciona o valeu do input em focus e recebe um parametro numero do teclado 
   const selectInput = (n) => {
-    console.log('Recebi no selectInput:', n);
-    console.log('Input Selecionado:', inputSelecionado.value);
+    
 
     if (inputSelecionado.value === 'first') {
-      firstInput.value += n;
-      console.log('Valor do firstInput após o clique:', firstInput.value);
+      firstInput.value += n
+      
     } else if (inputSelecionado.value === 'second') {
-      secondInput.value += n;
+      secondInput.value += n
+      
     }
   }
 

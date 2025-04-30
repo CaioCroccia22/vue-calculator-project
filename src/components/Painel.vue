@@ -1,8 +1,8 @@
 <script setup>
 // Cria bindo direto com o v-model que vem com o pai
     const numbersModel = defineModel('numbers')
-    const firstInput = defineModel('first')
-    const secondInput = defineModel('second')
+    const firstInput = defineModel('firstInput')
+    const secondInput = defineModel('secondInput')
     const emit = defineEmits(['setFocusInput', 'getOperator'])
 </script>
 
