@@ -1,5 +1,5 @@
 <script setup>
-    const emit = defineEmits(['clickKeyboard'])
+    const emit = defineEmits(['clickKeyboard','reset'])
 
     const handleClick = (n) => {
         emit('clickKeyboard', n)
@@ -16,8 +16,8 @@
                 class="btn m-4 btn-secondary  px-4 py-3 rounded-circle"
                 @click="handleClick(n)"
                 type="button">{{ n }}</button>
-                <button id="btn-ac" class="btn m-4 btn-secondary  px-4 py-3 rounded-circle">AC</button>
-                <button id="btn-dot" class="btn m-4 btn-secondary  px-4 py-3 rounded-circle">,</button>
+                <button id="btn-ac" @click="emit('reset')" class="btn m-4 btn-secondary  px-4 py-3 rounded-circle">AC</button>
+                
             </div>
             
         </div>

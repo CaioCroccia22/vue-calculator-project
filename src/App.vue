@@ -7,7 +7,10 @@
   const r = ref('')
   const firstInput = ref('')
   const secondInput = ref('')
-  const inputSelecionado = ref(null) // vai guardar o nome do input ativo
+  const inputSelecionado = ref(null) // vai guardar o nome do input ativo 
+
+  //Para reset do select
+  const selectedOperator = ref(null)
 
   // Função para pegar o input selecionado
   const setFocusInput = (campo) => {
@@ -39,6 +42,8 @@ const calc = (operator) =>{
     case '4':
       result = a * b
       break
+    case '5':
+      operator.value = undefined
     default:
       result = 'Operador Inválida'
   }
@@ -48,6 +53,7 @@ const calc = (operator) =>{
   
     ///Seleciona o valeu do input em focus e recebe um parametro numero do teclado 
 const selectInput = (n) => {
+    
     
 
     if (inputSelecionado.value === 'first') {
@@ -59,7 +65,12 @@ const selectInput = (n) => {
     }
   }
 
-  const cleanInput = () => numbers.value = '';
+  const cleanInput = () => {
+    firstInput.value = '';
+    secondInput.value = '';
+    r.value = 0;
+    selectedOperator.value = null;
+    }
 </script>
 
 <template>
@@ -68,11 +79,15 @@ const selectInput = (n) => {
         v-model:firstInput="firstInput"
         v-model:secondInput="secondInput"
         v-model:result="r"
+        v-model:operator = "selectedOperator"
         @setFocusInput="setFocusInput"
         @startCalc="calc"
         ></Painel>  
         <div>
-          <Keyboard @clickKeyboard = "selectInput"></Keyboard>
+          <Keyboard 
+            @clickKeyboard = "selectInput"
+            @reset="cleanInput"
+            ></Keyboard>
         </div>
 </template>
 
