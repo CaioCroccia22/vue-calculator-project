@@ -70,21 +70,31 @@ const selectInput = (n) => {
         v-model:result="r"
         @setFocusInput="setFocusInput"
         @startCalc="calc"
-        ></Painel>
-      <div class="content text-center">
-        <Keyboard @clickKeyboard = "selectInput"></Keyboard>
-      </div> 
+        ></Painel>  
+        <div>
+          <Keyboard @clickKeyboard = "selectInput"></Keyboard>
+        </div>
 </template>
 
-<style scoped>
-  *{
-    padding: 0;
-    margin: auto;
-    box-sizing: border-box;
-  }
-  .content{
-    background-color: #000000;
-    
-  }
+<style>
+  
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  background-color: #2D2D2D;
+  border: solid 10px #30323F;
+  width: 100vw;
+  height: 100vh;
+  
+}
+
+#app {
+  background-color: #2D2D2D;
+  
+}
   
 </style>

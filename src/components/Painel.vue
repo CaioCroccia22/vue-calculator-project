@@ -19,8 +19,8 @@ const selectedOperator = ref(null)
 </script>
 
 <template>
-    <div>
-        <div class="row py-5 rounded"  style="background-color: #30323F;">
+    <div class="container mt-5 p-4">
+        <div class="row py-1 rounded">
             <div class="col-md-2 px-4">
                 <input type="text" 
                     @focus="emit('setFocusInput','first')"  
@@ -47,10 +47,10 @@ const selectedOperator = ref(null)
                     placeholder="digite o valor">
             </div>
             <div class="col-md-2 px-4">
-                <button @click="startCalc" class="btn btn-primary">Calcular</button>
+                <button id="btn-calc" @click="startCalc" class="btn btn-primary">Calcular</button>
             </div>
             <div class="col-md-2 px-4">
-                <p class="d-flex justify-content-center align-items-center"  style="color: aliceblue;">{{ result }}</p>
+                <p class="d-flex justify-content-center align-items-center m-3"  style="color: aliceblue;">{{ showResult }}</p>
             </div>
         </div>
     </div>
@@ -63,12 +63,27 @@ const selectedOperator = ref(null)
     .container{
         width: 100vw;
         margin: auto;
+        /* background-color: #30323F;  */
+        background-color: black;
     }
-    .row-panel{
-        background-color: #30323F; 
+    .container.mt-5.p-4{
+        /* background-color: #30323F;  */
+        /* background-color: black; */
         color: #fff;
         font-size: 32px;
         padding-top: 50px;
+        border-radius: 50px;
+        
+    }
+    .row.py-1.rounded{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+    }
+   
+    #btn-calc{
+        background-color: #FF9601;
     }
     
 </style>
