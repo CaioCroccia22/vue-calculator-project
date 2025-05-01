@@ -23,5 +23,12 @@
 </template>
 
 <style>
-
+.container.m-5{
+    background-color: #000000;
+    width: 100vw;
+}
+.btn{
+    background-color: #333333;
+    color: #fff;
+}
 </style>

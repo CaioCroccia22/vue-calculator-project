@@ -1,9 +1,21 @@
 <script setup>
+//Criando um v-model do filho
+import { ref } from 'vue';
+
+const selectedOperator = ref(null)
+
 // Cria bindo direto com o v-model que vem com o pai
     const numbersModel = defineModel('numbers')
     const firstInput = defineModel('firstInput')
     const secondInput = defineModel('secondInput')
-    const emit = defineEmits(['setFocusInput', 'getOperator'])
+    const showResult = defineModel('result')
+    const emit = defineEmits(['setFocusInput', 'startCalc'])
+   
+
+        // @change="emit('getOperator', $event.target.value)"
+    const startCalc = () => {
+        emit('startCalc', selectedOperator.value)
+    }
 </script>
 
 <template>
@@ -17,7 +29,9 @@
                     placeholder="digite o valor">
             </div>
             <div class="col-md-2">
-                <select class="form-select" @change="emit('getOperator', $event.target.value)" id="floatingSelect" aria-label="Floating label select example">
+                <select class="form-select" 
+                v-model="selectedOperator"
+                id="floatingSelect" aria-label="Floating label select example">
                     <option selected>Selecione a operação</option>
                     <option value="1">Soma</option>
                     <option value="2">Subtração</option>
@@ -33,10 +47,10 @@
                     placeholder="digite o valor">
             </div>
             <div class="col-md-2 px-4">
-                <button class="btn btn-primary">Calcular</button>
+                <button @click="startCalc" class="btn btn-primary">Calcular</button>
             </div>
             <div class="col-md-2 px-4">
-                <p class="d-flex justify-content-center align-items-center"  style="color: aliceblue;">Resultado</p>
+                <p class="d-flex justify-content-center align-items-center"  style="color: aliceblue;">{{ result }}</p>
             </div>
         </div>
     </div>
