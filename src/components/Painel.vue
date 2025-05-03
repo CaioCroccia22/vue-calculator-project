@@ -24,14 +24,14 @@ import { ref } from 'vue';
 <template>
     <div class="container mt-5 p-4">
         <div class="row rounded">
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-8">
                 <input type="text" 
                     @focus="emit('setFocusInput','first')"  
                     v-model="firstInput"
                     class="form-control" 
                     placeholder="digite o valor">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-8">
                 <select class="form-select" 
                 v-model="selectedOperator"
                 id="floatingSelect" aria-label="Floating label select example">
@@ -42,7 +42,7 @@ import { ref } from 'vue';
                     <option value="4">Multiplicação</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-8">
                 <input type="text"
                     @focus="emit('setFocusInput','second')" 
                     v-model="secondInput" 
@@ -53,7 +53,7 @@ import { ref } from 'vue';
                 <button id="btn-calc" @click="startCalc" class="btn btn-primary">Calcular</button>
             </div>
             <div class="col-md-2">
-                <p style="color: aliceblue;">{{ showResult }}</p>
+                <p id="result" style="color: aliceblue;">{{ showResult }}</p>
             </div>
         </div>
     </div>
@@ -88,5 +88,23 @@ import { ref } from 'vue';
     #btn-calc{
         background-color: #FF9601;
     }
+
+    @media (max-width: 576px) {
+        .container.mt-5.p-4{
+            width: 80%;
+        }
+        .col-sm-8{
+            margin-bottom: 30px;
+            max-width: 80%;
+        }
+        #result{
+            margin-top: 30px;
+            max-width: 100%;
+            /* margin-left: 80px; */
+            justify-content: center;
+            text-align: center;
+            display: flex;
+        }
+     }
     
 </style>

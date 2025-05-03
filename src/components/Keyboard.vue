@@ -10,8 +10,9 @@
 <template>
     <div class="container rounded">
         <div class="row d-flex">
-            <div class="col-6 px-5">
+            <div class="col-md-6 px-5 col-sm-3">
                 <button v-for="n in [1,2,3,4,5,6,7,8,9,0]"
+                id="number-button"
                 :key="n"
                 class="btn m-4 btn-secondary  px-4 py-3 rounded-circle"
                 @click="handleClick(n)"
@@ -42,5 +43,22 @@
 }
 #btn-ac, #btn-dot{
     background-color: #FF9601;
+}
+
+@media (max-width: 576px){
+    .container{
+    max-width: 100%;
+    }
+    .col-sm-3{
+        width: 90%;
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        
+    }
+    #number-button{
+        width: 55px;
+        height: 55px;
+    }
+
 }
 </style>

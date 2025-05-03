@@ -1,7 +1,7 @@
 <script setup>
   import Painel from "./components/Painel.vue";
   import Keyboard from "./components/Keyboard.vue";
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
 
   const numbers = ref('')
   const r = ref('')
@@ -10,7 +10,7 @@
   const inputSelecionado = ref(null) // vai guardar o nome do input ativo 
 
   //Para reset do select
-  const selectedOperator = ref(null)
+  const operator = ref(null)
 
   // Função para pegar o input selecionado
   const setFocusInput = (campo) => {
@@ -19,7 +19,7 @@
 
 
 //Calculo da operação 
-const calc = (operator) =>{
+const calc = (operatorValue) =>{
   // console.log(typeof(firstInput.value)) 
   // console.log(typeof(secondInput.value))
 
@@ -29,7 +29,7 @@ const calc = (operator) =>{
   // console.log(b)
   let result = ''
 
-  switch (operator){
+  switch (operatorValue){
     case '1':
       result = a + b
       break
@@ -45,10 +45,10 @@ const calc = (operator) =>{
     case '5':
       operator.value = undefined
     default:
-      result = 'Operador Inválida'
+      result = 'Selecione uma operação'
   }
   r.value = result
-  console.log(r.value)
+  
 }
   
     ///Seleciona o valeu do input em focus e recebe um parametro numero do teclado 
@@ -71,6 +71,14 @@ const selectInput = (n) => {
     r.value = 0;
     selectedOperator.value = null;
     }
+
+    watch([firstInput, secondInput, operator], ([a, b, op]) => {
+      if(a !=='' && b !== '' && op !== null){
+        calc(op)
+      } else{
+        r.value = ''
+      }
+    })
 </script>
 
 <template>
@@ -79,7 +87,7 @@ const selectInput = (n) => {
         v-model:firstInput="firstInput"
         v-model:secondInput="secondInput"
         v-model:result="r"
-        v-model:operator = "selectedOperator"
+        v-model:operator = "operator"
         @setFocusInput="setFocusInput"
         @startCalc="calc"
         ></Painel>  
